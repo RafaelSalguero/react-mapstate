@@ -1,5 +1,5 @@
 {
-  "name": "react-storeprops",
+  "name": "react-mapstate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,10 @@
   },
   "devDependencies": {
     "@types/react": "^15.0.29"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RafaelSalguero/react-mapstate/"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
