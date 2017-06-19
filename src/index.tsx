@@ -16,7 +16,7 @@ export function mapState<TProps extends object, TState>(getProps: (props: TProps
             }
 
             render() {
-                const childProps = getProps(this.props, this.state, this.setState);
+                const childProps = getProps(this.props, this.state, (state, callback) => this.setState(state, callback));
                 return <Component {...childProps} />
             }
         };
