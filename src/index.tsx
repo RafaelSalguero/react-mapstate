@@ -20,6 +20,9 @@ export function mapState<TProps extends object, TState>(getProps: <K extends key
                 return <Component {...childProps} />
             }
         };
+
+        const innerName = Component.displayName || Component.name || "Component";
+        ret.displayName = `MapState(${innerName})`;
         return ret;
     }
 }
