@@ -7,7 +7,7 @@ export type SetStateFunc<TState> = <K extends keyof TState>(state: Pick<TState, 
  * @param getProps Get object props given internal state
  * @param getInitialState Gets the initial state
  */
-export function mapState<TProps extends object, TState>(getProps: <K extends keyof TProps>(props: TProps, state: TState, setState: SetStateFunc<TState>) => Pick<TProps, K>, getInitialState: (props: TProps) => TState) {
+export function mapState<TProps extends object, TState>(getProps: (props: TProps, state: TState, setState: SetStateFunc<TState>) => TProps, getInitialState: (props: TProps) => TState) {
     return function (Component: React.ComponentClass<TProps>) {
         const ret: React.ComponentClass<TProps> = class StateWrapper extends React.PureComponent<TProps, TState> {
             constructor(props) {
@@ -16,7 +16,7 @@ export function mapState<TProps extends object, TState>(getProps: <K extends key
             }
 
             render() {
-                const childProps = Object.assign(this.props, getProps(this.props, this.state, this.setState));
+                const childProps = getProps(this.props, this.state, this.setState);
                 return <Component {...childProps} />
             }
         };
